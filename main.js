@@ -6,13 +6,15 @@ var Module = {
             video       = document.querySelector('#video'),
             canvas      = document.querySelector('#canvas'),
             photo       = document.querySelector('#photo'),
+            flipButton  = document.querySelector('#flipButton'),
             startButton = document.querySelector('#startButton'),
             width       =  620,
-            height      = 0;
+            height      = 0,
+            front       = false;
 
         const videoConstraints = {
             audio: false,
-            video: true,
+            video: { facingMode: (front? "user" : "environment") },
         };
 
         navigator.mediaDevices
@@ -74,5 +76,9 @@ var Module = {
             takePicture();
             ev.preventDefault();
         }, false);
+
+        flipButton.addEventListener('click', function(ev) {
+            front = !front;
+        })
     }
 }
