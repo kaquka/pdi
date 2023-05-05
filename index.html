@@ -22,6 +22,14 @@
             <button id="startButton" class="btn btn-primary mt-1 d-inline" data-bs-toggle="modal" data-bs-target="#recognizeModal">
                 Take photo
             </button>
+            
+        </div>
+        <div class="w-50 m-auto text-center">
+            <img id="imageSrc" alt="No Image" class="d-none">
+            <div class="my-3">
+                <label for="fileInput" class="form-label text-secondary"><span class="text-info">¿Problemas para capturar?</span> Suba una foto en su lugar</label>
+                <input id="fileInput" type="file" class="form-control">
+            </div>
         </div>
         <!-- Modal -->
         <div class="modal fade" id="recognizeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="recognizeModalLabel" aria-hidden="true">

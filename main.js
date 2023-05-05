@@ -6,8 +6,9 @@ var Module = {
             video       = document.querySelector('#video'),
             canvas      = document.querySelector('#canvas'),
             photo       = document.querySelector('#photo'),
-            flipButton  = document.querySelector('#flipButton'),
+            imgElement  = document.querySelector('#imageSrc'),
             startButton = document.querySelector('#startButton'),
+            fileInput   = document.querySelector('#fileInput'),
             width       =  620,
             height      = 0;
 
@@ -75,5 +76,16 @@ var Module = {
             takePicture();
             ev.preventDefault();
         }, false);
+
+        fileInput.addEventListener('change', function(ev) {
+            imgElement.src = URL.createObjectURL(ev.target.files[0]);
+        }, false);
+
+        imgElement.onload = function() {
+            let mat = cv.imread(imgElement);
+            video.pause();
+            cv.imshow(canvas, mat);
+            mat.delete();
+        }
     }
 }
